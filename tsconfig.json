@@ -19,7 +19,10 @@
     "strict": true,
     "target": "esnext",
     "paths": {
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@models/*": ["models/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "exclude": ["node_modules"],

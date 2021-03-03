@@ -7,17 +7,26 @@ import { DarkModeSwitch } from '../components/DarkModeSwitch';
 import { CTA } from '../components/CTA';
 import { Footer } from '../components/Footer';
 
-import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { SignOutButton } from '@components/atoms/auth/SignOutButton';
+import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
+import { useCurrentUser } from '@hooks/useCurrentUser';
 const Index = () => {
-  const { currentUser, isAuthChecking } = useCurrentUser();
+  const { currentUser } = useCurrentUser();
 
-  console.log('current', currentUser);
-  if (isAuthChecking) return <div>ログイン情報を確認中…</div>;
-  if (!currentUser) return <div>ログインしていません</div>;
   return (
     <Container height="100vh">
+      {currentUser ? (
+        <>
+          <div>あなたのユーザー名は{currentUser.uid}です</div>
+          <SignOutButton />
+        </>
+      ) : (
+        <div>
+          <GoogleSignInButton />
+          ログインしていません
+        </div>
+      )}
       <Hero />
-      <div>あなたのユーザー名は{currentUser.uid}です</div>
       <Main>
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
@@ -39,7 +48,6 @@ const Index = () => {
           </ListItem>
         </List>
       </Main>
-
       <DarkModeSwitch />
       <Footer>
         <Text>Next ❤️ Chakra</Text>
