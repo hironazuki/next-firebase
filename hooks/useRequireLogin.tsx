@@ -1,0 +1,24 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useCurrentUser } from './useCurrentUser';
+import { useToast } from '@chakra-ui/react';
+export const useRequireLogin = () => {
+  const { currentUser, isAuthChecking } = useCurrentUser();
+  const router = useRouter();
+  const toast = useToast();
+
+  useEffect(() => {
+    if (isAuthChecking) return; // まだ確認中
+    if (!currentUser) {
+      toast({
+        position: 'top-right',
+        title: 'ログインしてください',
+        description: 'ログインが必要なページです。',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      });
+      router.push('/'); // 未ログインだったのでリダイレクト
+    }
+  }, [currentUser]);
+};

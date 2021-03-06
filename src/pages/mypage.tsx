@@ -9,26 +9,15 @@ import { DarkModeSwitch } from '../components/DarkModeSwitch';
 import { CTA } from '../components/CTA';
 import { Footer } from '../components/Footer';
 
-import { SignOutButton } from '@components/atoms/auth/SignOutButton';
-import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 import { useCurrentUser } from '@hooks/useCurrentUser';
-const Index = () => {
-  const { currentUser } = useCurrentUser();
-
+import { useRequireLogin } from '@hooks/useRequireLogin';
+const Mypage = () => {
+  useRequireLogin();
+  const { currentUser, isAuthChecking } = useCurrentUser();
+  if (isAuthChecking) return <div>ログイン情報を確認中…</div>;
   return (
     <Container height="100vh">
-      {currentUser ? (
-        <>
-          <div>あなたのユーザー名は{currentUser.uid}です</div>
-          <SignOutButton />
-        </>
-      ) : (
-        <div>
-          <GoogleSignInButton />
-          ログインしていません
-        </div>
-      )}
-      <Hero />
+      {currentUser && <Hero title={`あなたのユーザー名は${currentUser.uid}です`} />}
       <Main>
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
@@ -38,9 +27,9 @@ const Index = () => {
         <List spacing={3} my={0}>
           <ListItem>
             <ListIcon as={CheckCircleIcon} color="green.500" />
-            <Link href="/mypage">
+            <Link href="/">
               <ChakraLink flexGrow={1} mr={2}>
-                My Page <LinkIcon />
+                Top Page <LinkIcon />
               </ChakraLink>
             </Link>
           </ListItem>
@@ -67,4 +56,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Mypage;
