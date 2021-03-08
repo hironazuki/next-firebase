@@ -9,38 +9,29 @@ import { DarkModeSwitch } from '../components/DarkModeSwitch';
 import { CTA } from '../components/CTA';
 import { Footer } from '../components/Footer';
 
-import { SignOutButton } from '@components/atoms/auth/SignOutButton';
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
-import { useCurrentUser } from '@hooks/useCurrentUser';
-const Index = () => {
-  const { currentUser } = useCurrentUser();
 
+import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
+
+const Mypage = () => {
+  useIsAlreadylogged();
   return (
     <Container height="100vh">
-      {currentUser ? (
-        <>
-          <div>あなたのユーザー名は{currentUser.uid}です</div>
-          <SignOutButton />
-        </>
-      ) : (
-        <div>
-          <GoogleSignInButton />
-          ログインしていません
-        </div>
-      )}
       <Hero />
+
       <Main>
         <Text>
-          Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
+          {/* Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '} */}
+          <GoogleSignInButton />
           <Code>typescript</Code>.
         </Text>
 
         <List spacing={3} my={0}>
           <ListItem>
             <ListIcon as={CheckCircleIcon} color="green.500" />
-            <Link href="/mypage">
+            <Link href="/">
               <ChakraLink flexGrow={1} mr={2}>
-                My Page <LinkIcon />
+                Top Page <LinkIcon />
               </ChakraLink>
             </Link>
           </ListItem>
@@ -67,4 +58,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Mypage;
