@@ -18,7 +18,12 @@ export const useRequireLogin = () => {
         duration: 9000,
         isClosable: true,
       });
-      router.push('/'); // 未ログインだったのでリダイレクト
+      // router.push('/'); // 未ログインだったのでリダイレクト
+
+      router.push({
+        pathname: '/login',
+        query: { redirect_to: router.pathname },
+      });
     }
   }, [currentUser]);
 };
