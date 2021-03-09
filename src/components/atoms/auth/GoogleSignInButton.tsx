@@ -26,6 +26,7 @@ export const GoogleSignInButton = () => {
   };
   return (
     <Button
+      w={'full'}
       isLoading={isProcessing}
       colorScheme="blue"
       leftIcon={<FcGoogle />}
@@ -33,7 +34,7 @@ export const GoogleSignInButton = () => {
       variant="outline"
       onClick={() => LogIn()}
     >
-      ログイン
+      Google で ログイン
     </Button>
   );
 };

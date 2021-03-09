@@ -17,7 +17,7 @@ const Mypage = () => {
   useIsAlreadylogged();
   return (
     <Container height="100vh">
-      <Hero />
+      <Hero title="Login Page" />
 
       <Main>
         <Text>

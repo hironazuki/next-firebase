@@ -12,24 +12,23 @@ import { Footer } from '../components/Footer';
 import { SignOutButton } from '@components/atoms/auth/SignOutButton';
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 import { useCurrentUser } from '@hooks/useCurrentUser';
+
+import { SignInModal } from '@components/organisms/SignInModal';
 const Index = () => {
   const { currentUser } = useCurrentUser();
 
   return (
     <Container height="100vh">
-      {currentUser ? (
-        <>
-          <div>あなたのユーザー名は{currentUser.uid}です</div>
-          <SignOutButton />
-        </>
-      ) : (
-        <div>
-          <GoogleSignInButton />
-          ログインしていません
-        </div>
-      )}
-      <Hero />
+      {/* <Hero /> */}
       <Main>
+        {currentUser ? (
+          <>
+            <div>あなたのユーザー名は{currentUser.uid}です</div>
+            <SignOutButton />
+          </>
+        ) : (
+          <SignInModal />
+        )}
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
           <Code>typescript</Code>.
