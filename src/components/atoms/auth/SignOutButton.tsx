@@ -2,11 +2,14 @@ import firebase from 'firebase/app';
 import { Button } from '@chakra-ui/react';
 import { useSetRecoilState } from 'recoil';
 import { currentUserState } from '../../../../states/currentUser';
+import { useRouter } from 'next/router';
 
 export const SignOutButton = () => {
   const setCurrentUser = useSetRecoilState(currentUserState);
+  const router = useRouter();
 
-  const Logout = () => {
+  const Logout = async () => {
+    await router.push('/');
     firebase
       .auth()
       .signOut()

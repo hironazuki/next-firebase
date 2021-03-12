@@ -13,29 +13,6 @@ import {
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 
-// import { useSetRecoilState } from 'recoil';
-// import { currentUserState } from '../../../../states/currentUser';
-
-// export const SignOutButton = () => {
-//   const setCurrentUser = useSetRecoilState(currentUserState);
-
-//   const Logout = () => {
-//     firebase
-//       .auth()
-//       .signOut()
-//       .then(() => {
-//         window.location.reload();
-//       });
-//     setCurrentUser(null);
-//   };
-
-//   return (
-//     <Button colorScheme="teal" variant="solid" onClick={() => Logout()}>
-//       ログアウト
-//     </Button>
-//   );
-// };
-
 export const SignInModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (

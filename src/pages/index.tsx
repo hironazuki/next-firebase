@@ -10,7 +10,6 @@ import { CTA } from '../components/CTA';
 import { Footer } from '../components/Footer';
 
 import { SignOutButton } from '@components/atoms/auth/SignOutButton';
-import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 import { useCurrentUser } from '@hooks/useCurrentUser';
 
 import { SignInModal } from '@components/organisms/SignInModal';
@@ -24,10 +23,9 @@ const Index = () => {
         {currentUser ? (
           <>
             <div>あなたのユーザー名は{currentUser.uid}です</div>
-            <SignOutButton />
           </>
         ) : (
-          <SignInModal />
+          <p>ログインしていません</p>
         )}
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
@@ -57,7 +55,7 @@ const Index = () => {
           </ListItem>
         </List>
       </Main>
-      <DarkModeSwitch />
+      {/* <DarkModeSwitch /> */}
       <Footer>
         <Text>Next ❤️ Chakra</Text>
       </Footer>
