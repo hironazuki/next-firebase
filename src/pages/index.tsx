@@ -22,7 +22,7 @@ const Index = () => {
       <Main>
         {currentUser ? (
           <>
-            <div>あなたのユーザー名は{currentUser.uid}です</div>
+            <div>あなたのユーザー名は{currentUser.displayName}です</div>
           </>
         ) : (
           <p>ログインしていません</p>
