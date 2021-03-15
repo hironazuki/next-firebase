@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import {
   Box,
   Flex,
@@ -10,7 +8,6 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link as ChakraLink,
   Menu,
   MenuButton,
   MenuList,
@@ -23,6 +20,9 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
+
+import Link from '@components/Link';
+
 import {
   HamburgerIcon,
   CloseIcon,
@@ -68,15 +68,19 @@ export const WithSubnavigation = () => {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} alignItems={'center'}>
-          <Link href="/">
-            <ChakraLink
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}
-              color={useColorModeValue('gray.800', 'white')}
-            >
-              Next-firebase-Auth
-            </ChakraLink>
+        <Flex
+          flex={{ base: 1 }}
+          display={{ base: 'none', sm: 'flex' }}
+          justify={{ base: 'center', md: 'start' }}
+          alignItems={'center'}
+        >
+          <Link
+            href="/"
+            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+            fontFamily={'heading'}
+            color={useColorModeValue('gray.800', 'white')}
+          >
+            Next-firebase-Auth
           </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -169,34 +173,33 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   return (
-    <Link href={href ?? '#'}>
-      <ChakraLink
-        role={'group'}
-        display={'block'}
-        p={2}
-        rounded={'md'}
-        _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
-      >
-        <Stack direction={'row'} align={'center'}>
-          <Box>
-            <Text transition={'all .3s ease'} _groupHover={{ color: 'pink.400' }} fontWeight={500}>
-              {label}
-            </Text>
-            <Text fontSize={'sm'}>{subLabel}</Text>
-          </Box>
-          <Flex
-            transition={'all .3s ease'}
-            transform={'translateX(-10px)'}
-            opacity={0}
-            _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-            justify={'flex-end'}
-            align={'center'}
-            flex={1}
-          >
-            <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-          </Flex>
-        </Stack>
-      </ChakraLink>
+    <Link
+      href={href ?? '#'}
+      role={'group'}
+      display={'block'}
+      p={2}
+      rounded={'md'}
+      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+    >
+      <Stack direction={'row'} align={'center'}>
+        <Box>
+          <Text transition={'all .3s ease'} _groupHover={{ color: 'pink.400' }} fontWeight={500}>
+            {label}
+          </Text>
+          <Text fontSize={'sm'}>{subLabel}</Text>
+        </Box>
+        <Flex
+          transition={'all .3s ease'}
+          transform={'translateX(-10px)'}
+          opacity={0}
+          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
+          justify={'flex-end'}
+          align={'center'}
+          flex={1}
+        >
+          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+        </Flex>
+      </Stack>
     </Link>
   );
 };
@@ -218,7 +221,6 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
-        // as={ChakraLink}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -250,9 +252,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         >
           {children &&
             children.map((child) => (
-              <ChakraLink key={child.label} py={2} as={Link} href={child.href ?? '#'}>
+              <Link key={child.label} py={2} href={child.href}>
                 {child.label}
-              </ChakraLink>
+              </Link>
             ))}
         </Stack>
       </Collapse>
@@ -269,11 +271,11 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Inspiration',
+    label: 'ホバーリンク',
     children: [
       {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
+        label: 'hoge hoge',
+        subLabel: 'huga huga',
         href: '#',
       },
       {
@@ -284,16 +286,21 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
-    label: 'Find Work',
+    label: 'hover link',
     children: [
       {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
+        label: 'piyo',
+        subLabel: 'piyo',
         href: '#',
       },
       {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
+        label: 'piyo2',
+        subLabel: 'piyo',
+        href: '#',
+      },
+      {
+        label: 'piyo3',
+        subLabel: 'piyo',
         href: '#',
       },
     ],
