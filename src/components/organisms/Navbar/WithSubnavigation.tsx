@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import {
   Box,
   Flex,
@@ -35,13 +36,26 @@ import { useCurrentUser } from '@hooks/useCurrentUser';
 import { DarkModeSwitch } from '@components/DarkModeSwitch';
 
 import { SignInModal } from '@components/organisms/SignInModal';
-import { SignOutButton } from '@components/atoms/auth/SignOutButton';
-// import { useSetRecoilState } from 'recoil';
-// import { currentUserState } from '@states/currentUser';
+import { useSetRecoilState } from 'recoil';
+import { currentUserState } from '@states/currentUser';
+import { useRouter } from 'next/router';
 
 export const WithSubnavigation = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser } = useCurrentUser();
+  const setCurrentUser = useSetRecoilState(currentUserState);
+  const router = useRouter();
+
+  const LogOut = async () => {
+    await router.push('/');
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        window.location.reload();
+      });
+    setCurrentUser(null);
+  };
 
   return (
     <Box>
@@ -103,8 +117,9 @@ export const WithSubnavigation = () => {
                     <MenuItem>Link 1</MenuItem>
                     <MenuItem>Link 2</MenuItem>
                     <MenuDivider />
-                    <SignOutButton />
-                    <MenuItem icon={<AtSignIcon />}>Link 3</MenuItem>
+                    <MenuItem icon={<AtSignIcon />} onClick={() => LogOut()}>
+                      ログアウト
+                    </MenuItem>
                   </MenuList>
                 </Menu>
               </Flex>
