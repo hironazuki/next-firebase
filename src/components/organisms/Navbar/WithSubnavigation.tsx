@@ -32,6 +32,8 @@ import {
   AtSignIcon,
 } from '@chakra-ui/icons';
 
+import { FaUserAlt, FaSignOutAlt, FaListAlt } from 'react-icons/fa';
+
 import { useCurrentUser } from '@hooks/useCurrentUser';
 import { DarkModeSwitch } from '@components/DarkModeSwitch';
 
@@ -114,10 +116,10 @@ export const WithSubnavigation = () => {
                     <Avatar size={'sm'} src={currentUser.photoUrl} />
                   </MenuButton>
                   <MenuList>
-                    <MenuItem>Link 1</MenuItem>
-                    <MenuItem>Link 2</MenuItem>
+                    <MenuItem icon={<FaUserAlt />}>Link 1</MenuItem>
+                    <MenuItem icon={<FaListAlt />}>Link 2</MenuItem>
                     <MenuDivider />
-                    <MenuItem icon={<AtSignIcon />} onClick={() => LogOut()}>
+                    <MenuItem icon={<FaSignOutAlt />} onClick={() => LogOut()}>
                       ログアウト
                     </MenuItem>
                   </MenuList>
