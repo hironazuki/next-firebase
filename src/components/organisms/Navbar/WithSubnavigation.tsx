@@ -24,13 +24,7 @@ import {
 
 import Link from '@components/Link';
 
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  AtSignIcon,
-} from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 import { FaUserAlt, FaSignOutAlt, FaListAlt } from 'react-icons/fa';
 

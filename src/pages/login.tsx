@@ -16,45 +16,47 @@ import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 const Mypage = () => {
   useIsAlreadylogged();
   return (
-    <Container height="100vh">
+    // <Container height="100vh">
+    <>
       <Hero title="Login Page" />
 
-      <Main>
-        <Text>
-          {/* Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '} */}
-          <GoogleSignInButton />
-          <Code>typescript</Code>.
-        </Text>
+      {/* // <Main> */}
+      <Text>
+        {/* Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '} */}
+        <GoogleSignInButton />
+        <Code>typescript</Code>.
+      </Text>
 
-        <List spacing={3} my={0}>
-          <ListItem>
-            <ListIcon as={CheckCircleIcon} color="green.500" />
-            <Link href="/">
-              <ChakraLink flexGrow={1} mr={2}>
-                Top Page <LinkIcon />
-              </ChakraLink>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <ListIcon as={CheckCircleIcon} color="green.500" />
-            <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
-              Chakra UI <LinkIcon />
+      <List spacing={3} my={0}>
+        <ListItem>
+          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <Link href="/">
+            <ChakraLink flexGrow={1} mr={2}>
+              Top Page <LinkIcon />
             </ChakraLink>
-          </ListItem>
-          <ListItem>
-            <ListIcon as={CheckCircleIcon} color="green.500" />
-            <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-              Next.js <LinkIcon />
-            </ChakraLink>
-          </ListItem>
-        </List>
-      </Main>
-      <DarkModeSwitch />
-      <Footer>
-        <Text>Next ❤️ Chakra</Text>
-      </Footer>
-      <CTA />
-    </Container>
+          </Link>
+        </ListItem>
+        <ListItem>
+          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
+            Chakra UI <LinkIcon />
+          </ChakraLink>
+        </ListItem>
+        <ListItem>
+          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
+            Next.js <LinkIcon />
+          </ChakraLink>
+        </ListItem>
+      </List>
+      {/* // </Main>
+      // <DarkModeSwitch />
+      // <Footer>
+      //   <Text>Next ❤️ Chakra</Text>
+      // </Footer>
+      // <CTA />
+    // </Container> */}
+    </>
   );
 };
 
