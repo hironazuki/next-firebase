@@ -1,59 +1,63 @@
-import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem } from '@chakra-ui/react';
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
-import { Hero } from '../components/Hero';
-import { Container } from '../components/Container';
-import { Main } from '../components/Main';
-import { DarkModeSwitch } from '../components/DarkModeSwitch';
-import { CTA } from '../components/CTA';
-import { Footer } from '../components/Footer';
+import Link from 'next/link';
 
-import { SignOutButton } from '@components/atoms/auth/SignOutButton';
-import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
+import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem, Stack } from '@chakra-ui/react';
+import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
+import { CTA } from '@components/CTA';
+import { SideMenu } from '@components/organisms/SideMenu';
+
 import { useCurrentUser } from '@hooks/useCurrentUser';
+
 const Index = () => {
   const { currentUser } = useCurrentUser();
 
   return (
-    <Container height="100vh">
-      {currentUser ? (
-        <>
-          <div>あなたのユーザー名は{currentUser.uid}です</div>
-          <SignOutButton />
-        </>
-      ) : (
-        <div>
-          <GoogleSignInButton />
-          ログインしていません
-        </div>
-      )}
-      <Hero />
-      <Main>
-        <Text>
-          Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-          <Code>typescript</Code>.
-        </Text>
+    <>
+      <Stack
+        display="grid"
+        gridTemplateColumns="100px minmax(0,1fr)"
+        gridTemplateRows="minmax(270px,auto) 1fr"
+      >
+        <Stack spacing="1.5rem" px="1rem" gridColumn="2 / 4" gridRow="1 / 3" mx="auto">
+          {/* <Box px="1rem"> */}
+          {currentUser ? (
+            <>
+              <Text>あなたのユーザー名は{currentUser.displayName}です</Text>
+            </>
+          ) : (
+            <Text>ログインしていません</Text>
+          )}
+          <Text>
+            Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
+            <Code>typescript</Code>.
+          </Text>
 
-        <List spacing={3} my={0}>
-          <ListItem>
-            <ListIcon as={CheckCircleIcon} color="green.500" />
-            <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
-              Chakra UI <LinkIcon />
-            </ChakraLink>
-          </ListItem>
-          <ListItem>
-            <ListIcon as={CheckCircleIcon} color="green.500" />
-            <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-              Next.js <LinkIcon />
-            </ChakraLink>
-          </ListItem>
-        </List>
-      </Main>
-      <DarkModeSwitch />
-      <Footer>
-        <Text>Next ❤️ Chakra</Text>
-      </Footer>
+          <List spacing={3} my={0} minHeight="100vh">
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              <Link href="/mypage">
+                <ChakraLink flexGrow={1} mr={2}>
+                  My Page <LinkIcon />
+                </ChakraLink>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
+                Chakra UI <LinkIcon />
+              </ChakraLink>
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
+                Next.js <LinkIcon />
+              </ChakraLink>
+            </ListItem>
+          </List>
+        </Stack>
+        <SideMenu />
+      </Stack>
       <CTA />
-    </Container>
+    </>
   );
 };
 

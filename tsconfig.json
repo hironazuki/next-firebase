@@ -22,7 +22,8 @@
       "@lib/*": ["lib/*"],
       "@models/*": ["models/*"],
       "@components/*": ["src/components/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@states/*": ["states/*"]
     }
   },
   "exclude": ["node_modules"],

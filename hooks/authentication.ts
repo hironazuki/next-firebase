@@ -9,31 +9,24 @@ export function Authentication() {
   const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
 
   useEffect(() => {
-    if (currentUser !== null) {
+    // currentUserに値がある場合処理をスキップ
+    if (currentUser) {
       return;
     }
 
-    (async function () {
-      try {
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            setCurrentUser({
-              uid: user.uid,
-              isAnonymous: user.isAnonymous,
-            });
-          } else {
-            // User is signed out.
-            setCurrentUser(null);
-          }
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setCurrentUser({
+          uid: user.uid,
+          displayName: user.displayName as string,
+          photoUrl: user.photoURL as string,
+          isAnonymous: user.isAnonymous,
         });
-        // const { currentUser } = await fetchCurrentUser(); // サーバーへのリクエスト（未ログインの場合は401等を返すものとする）
-        // ログインユーザーの情報が取得できたのでグローバルステートにセット
-        // setCurrentUser(currentUser);
-      } catch {
-        // 未ログイン（未ログイン時のリダイレクト処理などをここに書いても良いかも）
+      } else {
+        // ログインしていない場合にnullを入れる
         setCurrentUser(null);
       }
-    })();
+    });
   }, []);
 
   return null;
