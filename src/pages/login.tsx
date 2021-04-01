@@ -3,11 +3,6 @@ import Link from 'next/link';
 import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
 import { Hero } from '../components/Hero';
-import { Container } from '../components/Container';
-import { Main } from '../components/Main';
-import { DarkModeSwitch } from '../components/DarkModeSwitch';
-import { CTA } from '../components/CTA';
-import { Footer } from '../components/Footer';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 
@@ -16,13 +11,10 @@ import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 const Mypage = () => {
   useIsAlreadylogged();
   return (
-    // <Container height="100vh">
     <>
       <Hero title="Login Page" />
 
-      {/* // <Main> */}
       <Text>
-        {/* Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '} */}
         <GoogleSignInButton />
         <Code>typescript</Code>.
       </Text>
@@ -49,13 +41,6 @@ const Mypage = () => {
           </ChakraLink>
         </ListItem>
       </List>
-      {/* // </Main>
-      // <DarkModeSwitch />
-      // <Footer>
-      //   <Text>Next ❤️ Chakra</Text>
-      // </Footer>
-      // <CTA />
-    // </Container> */}
     </>
   );
 };

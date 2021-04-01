@@ -1,8 +1,7 @@
-import { Button, Box, useColorMode, Flex, Icon, Text } from '@chakra-ui/react';
+import { Box, useColorMode, Flex, Icon, Text } from '@chakra-ui/react';
 import Link from '@components/Link';
 
-import { Container } from './Container';
-import { FaUserAlt, FaSignOutAlt, FaListAlt } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
 
 export const CTA = () => {
   const { colorMode } = useColorMode();
