@@ -1,31 +1,42 @@
-import { Link as ChakraLink, Button } from '@chakra-ui/react'
+import { Box, useColorMode, Flex, Icon, Text } from '@chakra-ui/react';
+import Link from '@components/Link';
 
-import { Container } from './Container'
+import { FaUserAlt } from 'react-icons/fa';
 
-export const CTA = () => (
-  <Container
-    flexDirection="row"
-    position="fixed"
-    bottom="0"
-    width="100%"
-    maxWidth="48rem"
-    py={2}
-  >
-    <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mx={2}>
-      <Button width="100%" variant="outline" colorScheme="green">
-        chakra-ui
-      </Button>
-    </ChakraLink>
+export const CTA = () => {
+  const { colorMode } = useColorMode();
 
-    <ChakraLink
-      isExternal
-      href="https://github.com/vercel/next.js/blob/canary/examples/with-chakra-ui-typescript"
-      flexGrow={3}
-      mx={2}
+  const bgColor = { light: 'blue.100', dark: 'blue.600' };
+
+  const color = { light: 'black', dark: 'white' };
+  return (
+    <Flex
+      display={{ md: 'none' }}
+      position="sticky"
+      bottom="0"
+      height="calc(env(safe-area-inset-bottom,0px) + 56px)"
+      paddingBottom="calc(env(safe-area-inset-bottom,0px) + 56px)"
     >
-      <Button width="100%" variant="solid" colorScheme="green">
-        View Repo
-      </Button>
-    </ChakraLink>
-  </Container>
-)
+      <Box bg={bgColor[colorMode]} color={color[colorMode]}>
+        <Link width="calc(100% / 3)" textAlign="center" display="inline-block">
+          <Icon as={FaUserAlt} w={6} h={6} mt="2" />
+          <Text display="block" textAlign="center">
+            aaa
+          </Text>
+        </Link>
+        <Link width="calc(100% / 3)" textAlign="center" display="inline-block">
+          <Icon as={FaUserAlt} w={6} h={6} mt="2" />
+          <Text display="block" textAlign="center">
+            aaa
+          </Text>
+        </Link>
+        <Link width="calc(100% / 3)" textAlign="center" display="inline-block">
+          <Icon as={FaUserAlt} w={6} h={6} mt="2" />
+          <Text display="block" textAlign="center">
+            aaa
+          </Text>
+        </Link>
+      </Box>
+    </Flex>
+  );
+};

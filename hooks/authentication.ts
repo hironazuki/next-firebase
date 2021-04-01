@@ -18,6 +18,8 @@ export function Authentication() {
       if (user) {
         setCurrentUser({
           uid: user.uid,
+          displayName: user.displayName as string,
+          photoUrl: user.photoURL as string,
           isAnonymous: user.isAnonymous,
         });
       } else {
