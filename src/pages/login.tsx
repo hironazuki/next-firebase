@@ -1,48 +1,44 @@
-import Link from 'next/link';
-
-import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem } from '@chakra-ui/react';
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
-import { Hero } from '../components/Hero';
+// import Link from 'next/link';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 
 import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 
-const Mypage = () => {
+import {
+  Button,
+  Checkbox,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Stack,
+  Image,
+} from '@chakra-ui/react';
+
+const Login = () => {
   useIsAlreadylogged();
+
   return (
-    <>
-      <Hero title="Login Page" />
-
-      <Text>
-        <GoogleSignInButton />
-        <Code>typescript</Code>.
-      </Text>
-
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <Link href="/">
-            <ChakraLink flexGrow={1} mr={2}>
-              Top Page <LinkIcon />
-            </ChakraLink>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </>
+    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+        <Stack spacing={4} w={'full'} maxW={'md'}>
+          <Heading fontSize={'2xl'}>Sign in to your account</Heading>
+          <GoogleSignInButton />
+        </Stack>
+      </Flex>
+      <Flex flex={1}>
+        <Image
+          alt={'Login Image'}
+          objectFit={'cover'}
+          src={
+            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+          }
+        />
+      </Flex>
+    </Stack>
   );
 };
 
-export default Mypage;
+export default Login;

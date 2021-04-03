@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import firebase from 'firebase/app';
-import { Button } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
-export const GoogleSignInButton = () => {
+export const GoogleSignInButton = (props: ButtonProps) => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
   const LogIn = () => {
@@ -26,12 +26,15 @@ export const GoogleSignInButton = () => {
   };
   return (
     <Button
-      w={'full'}
+      // w={'full'}
+      w={'max-content'}
+      bgColor={''}
       isLoading={isProcessing}
       colorScheme="blue"
       leftIcon={<FcGoogle />}
       loadingText="ログイン処理中..."
       variant="outline"
+      {...props}
       onClick={() => LogIn()}
     >
       Google で ログイン

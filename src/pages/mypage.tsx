@@ -10,7 +10,10 @@ import { useRequireLogin } from '@hooks/useRequireLogin';
 const Mypage = () => {
   useRequireLogin();
   const { currentUser, isAuthChecking } = useCurrentUser();
+
   if (isAuthChecking) return <div>ログイン情報を確認中…</div>;
+  if (!currentUser) return <div>ログインしていません</div>;
+
   return (
     <>
       <Stack spacing="1.5rem" px="1rem" minHeight="100vh">
