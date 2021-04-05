@@ -1,44 +1,42 @@
 // import Link from 'next/link';
-
+import { GetStaticProps } from 'next';
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 
+import Link from '@components/Link/index';
 import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 
-import {
-  Button,
-  Checkbox,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Link,
-  Stack,
-  Image,
-} from '@chakra-ui/react';
+import { Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
 const Login = () => {
   useIsAlreadylogged();
 
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+      <Flex flex={{ base: '1', md: '1' }} bg={'cyan.100'}>
+        <Stack spacing={4} w={'full'} align={'center'} justify={'center'}>
+          <Link href="/">
+            <Heading fontSize={'2xl'}>Next-firebase-auth</Heading>
+          </Link>
+          <Text color={'gray.500'}>アプリの説明等：next.jsにfirebase authをのせたテンプレート</Text>
+        </Stack>
+      </Flex>
+
+      <Flex flex={{ base: '2', md: '1' }} align={'center'} justify={'center'}>
         <Stack spacing={4} w={'full'} maxW={'md'}>
           <Heading fontSize={'2xl'}>Sign in to your account</Heading>
           <GoogleSignInButton />
         </Stack>
       </Flex>
-      <Flex flex={1}>
-        <Image
-          alt={'Login Image'}
-          objectFit={'cover'}
-          src={
-            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
-          }
-        />
-      </Flex>
     </Stack>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {
+      isNotLayout: 'true', // 複数のレイアウトを切り替えたいときは 'MainLayout' などの文字列を用いる
+    },
+  };
 };
 
 export default Login;
