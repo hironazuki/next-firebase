@@ -14,8 +14,8 @@ export const useRequireLogin = () => {
         position: 'top-right',
         title: 'ログインしてください',
         description: 'ログインが必要なページです。',
-        status: 'error',
-        duration: 9000,
+        status: 'info',
+        duration: 5000,
         isClosable: true,
       });
       // router.push('/'); // 未ログインだったのでリダイレクト
