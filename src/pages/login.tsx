@@ -1,48 +1,42 @@
-import Link from 'next/link';
-
-import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem } from '@chakra-ui/react';
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
-import { Hero } from '../components/Hero';
-
+// import Link from 'next/link';
+import { GetStaticProps } from 'next';
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 
+import Link from '@components/Link/index';
 import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 
-const Mypage = () => {
+import { Flex, Heading, Stack, Text } from '@chakra-ui/react';
+
+const Login = () => {
   useIsAlreadylogged();
+
   return (
-    <>
-      <Hero title="Login Page" />
-
-      <Text>
-        <GoogleSignInButton />
-        <Code>typescript</Code>.
-      </Text>
-
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
+    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+      <Flex flex={{ base: '1', md: '1' }} bg={'cyan.100'}>
+        <Stack spacing={4} w={'full'} align={'center'} justify={'center'}>
           <Link href="/">
-            <ChakraLink flexGrow={1} mr={2}>
-              Top Page <LinkIcon />
-            </ChakraLink>
+            <Heading fontSize={'2xl'}>Next-firebase-auth</Heading>
           </Link>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </>
+          <Text color={'gray.500'}>アプリの説明等：next.jsにfirebase authをのせたテンプレート</Text>
+        </Stack>
+      </Flex>
+
+      <Flex flex={{ base: '2', md: '1' }} align={'center'} justify={'center'}>
+        <Stack spacing={4} w={'full'} maxW={'md'}>
+          <Heading fontSize={'2xl'}>Sign in to your account</Heading>
+          <GoogleSignInButton />
+        </Stack>
+      </Flex>
+    </Stack>
   );
 };
 
-export default Mypage;
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {
+      isNotLayout: 'true', // 複数のレイアウトを切り替えたいときは 'MainLayout' などの文字列を用いる
+    },
+  };
+};
+
+export default Login;
