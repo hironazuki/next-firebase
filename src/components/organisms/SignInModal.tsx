@@ -26,7 +26,7 @@ export const SignInModal = () => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody textAlign="center">
             <GoogleSignInButton />
           </ModalBody>
 

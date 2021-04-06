@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import theme from '../theme';
@@ -6,27 +7,27 @@ import '@lib/firebase';
 import { RecoilRoot } from 'recoil';
 import { Authentication } from '../../hooks/authentication';
 
-import { Container } from '@components/Container';
-import { Main } from '@components/Main';
-import { WithSubnavigation } from '@components/organisms/Navbar/WithSubnavigation';
-import { Footer } from '@components/Footer';
+import { Layout } from '@components/templates/Layout';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <RecoilRoot>
-      <ChakraProvider resetCSS theme={theme}>
-        <Authentication />
-        {/* <AppInit /> */}
-        <Container height="100%">
-          <WithSubnavigation />
-
-          <Main>
+    <>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width,viewport-fit=cover" />
+      </Head>
+      <RecoilRoot>
+        <ChakraProvider resetCSS theme={theme}>
+          <Authentication />
+          {pageProps.isNotLayout ? (
             <Component {...pageProps} />
-          </Main>
-          <Footer />
-        </Container>
-      </ChakraProvider>
-    </RecoilRoot>
+          ) : (
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          )}
+        </ChakraProvider>
+      </RecoilRoot>
+    </>
   );
 }
 

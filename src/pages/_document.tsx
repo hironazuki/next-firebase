@@ -5,12 +5,7 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html>
-        <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width,viewport-fit=cover"
-          />
-        </Head>
+        <Head />
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
           <ColorModeScript />
