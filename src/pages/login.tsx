@@ -31,7 +31,7 @@ const Login = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       isNotLayout: 'true', // 複数のレイアウトを切り替えたいときは 'MainLayout' などの文字列を用いる
