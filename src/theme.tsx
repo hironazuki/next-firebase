@@ -8,7 +8,12 @@ const breakpoints = createBreakpoints({
   md: '52em',
   lg: '64em',
   xl: '80em',
-})
+});
+
+const config: ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+};
 
 const theme = extendTheme({
   // globalに変更する場合
@@ -25,6 +30,8 @@ const theme = extendTheme({
   },
   fonts,
   breakpoints,
-})
+
+  config,
+});
 
 export default theme;
