@@ -54,10 +54,13 @@ export const WithSubnavigation = () => {
   };
 
   return (
-    <Box>
+    <Box width="100%" position="fixed">
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        style={{
+          backdropFilter: 'saturate(180%) blur(20px)',
+        }}
+        bg={useColorModeValue('clearWhite', 'clearBlack')}
+        color={useColorModeValue('black.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
