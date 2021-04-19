@@ -18,8 +18,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <meta name="viewport" content="initial-scale=1.0, width=device-width,viewport-fit=cover" />
       </Head>
       <RecoilRoot>
+        <Authentication />
         <ChakraProvider resetCSS theme={theme}>
-          <Authentication />
           <Layout pageProps={pageProps}>
             <Component {...pageProps} />
           </Layout>

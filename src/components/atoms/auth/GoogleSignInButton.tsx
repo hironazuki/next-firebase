@@ -12,28 +12,26 @@ export const GoogleSignInButton = (props: ButtonProps) => {
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(function (result: any) {
-        setIsProcessing(false);
+      .then((result) => {
         return result;
       })
-      .catch(function (error) {
-        console.log(error);
-        const errorCode = error.code;
-        console.log(errorCode);
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
+      .catch(() => {
+        // console.log(error);
+        // const errorCode = error.code;
+        // console.log(errorCode);
+        // const errorMessage = error.message;
+        // console.log(errorMessage);
+      })
+      .finally(() => setIsProcessing(false));
   };
   return (
     <Button
-      // w={'full'}
       w={'max-content'}
-      bgColor={''}
       isLoading={isProcessing}
-      colorScheme="blue"
+      colorScheme="gray"
       leftIcon={<FcGoogle />}
       loadingText="ログイン処理中..."
-      variant="outline"
+      variant="solid"
       {...props}
       onClick={() => LogIn()}
     >

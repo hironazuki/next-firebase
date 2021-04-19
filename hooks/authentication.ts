@@ -1,19 +1,14 @@
 import firebase from 'firebase/app';
 import '@lib/firebase';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import { useEffect, memo } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { currentUserState } from '../states/currentUser';
 
-export function Authentication() {
+export const Authentication = memo(() => {
   // グローバルステートにユーザー情報をセットするためのもの
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+  const setCurrentUser = useSetRecoilState(currentUserState);
 
   useEffect(() => {
-    // currentUserに値がある場合処理をスキップ
-    if (currentUser) {
-      return;
-    }
-
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         setCurrentUser({
@@ -30,4 +25,4 @@ export function Authentication() {
   }, []);
 
   return null;
-}
+});
