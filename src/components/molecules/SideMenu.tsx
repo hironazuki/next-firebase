@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { useColorMode, Flex, Icon, Text } from '@chakra-ui/react';
 
-import Link from '@components/Link';
+import Link from '@components/atoms/Link';
 import { FaUserAlt } from 'react-icons/fa';
 
 export const SideMenu: VFC = () => {

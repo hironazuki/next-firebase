@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import { Box, useColorMode, Flex, Icon, Text } from '@chakra-ui/react';
 import { FaUserAlt } from 'react-icons/fa';
 
-import Link from '@components/Link';
+import Link from '@components/atoms/Link';
 
 export const FooterMenu: VFC = () => {
   const { colorMode } = useColorMode();

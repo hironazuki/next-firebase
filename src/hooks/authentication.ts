@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import '@lib/firebase';
 import { useEffect, memo } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { currentUserState } from '../states/currentUser';
+import { currentUserState } from '@states/currentUser';
 
 export const Authentication = memo(() => {
   // グローバルステートにユーザー情報をセットするためのもの

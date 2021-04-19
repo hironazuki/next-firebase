@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, VFC } from 'react';
 import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
 
@@ -6,11 +6,11 @@ import theme from '../theme';
 import { AppProps } from 'next/app';
 import '@lib/firebase';
 import { RecoilRoot } from 'recoil';
-import { Authentication } from '../../hooks/authentication';
+import { Authentication } from '@hooks/authentication';
 
 const Noop: FC = ({ children }) => <>{children}</>;
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
   const Layout = (Component as any).Layout || Noop;
   return (
     <>
@@ -27,6 +27,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       </RecoilRoot>
     </>
   );
-}
+};
 
 export default MyApp;

@@ -2,7 +2,7 @@
 import { Flex, Heading, Stack, Text, useColorMode } from '@chakra-ui/react';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
-import Link from '@components/Link/index';
+import Link from '@components/atoms/Link';
 import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 
 const Login = () => {

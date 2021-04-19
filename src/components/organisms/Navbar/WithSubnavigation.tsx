@@ -27,7 +27,7 @@ import {
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { FaUserAlt, FaSignOutAlt, FaListAlt } from 'react-icons/fa';
 
-import Link from '@components/Link';
+import Link from '@components/atoms/Link';
 import { useCurrentUser } from '@hooks/useCurrentUser';
 import { DarkModeSwitch } from '@components/atoms/switch/DarkModeSwitch';
 import { SignInModal } from '@components/organisms/SignInModal';
