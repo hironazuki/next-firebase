@@ -10,7 +10,7 @@ export const Container = (props: FlexProps) => {
     <Flex
       minHeight="100vh"
       direction="column"
-      // alignItems="center"
+      alignItems="center"
       justifyContent="flex-start"
       bg={bgColor[colorMode]}
       color={color[colorMode]}

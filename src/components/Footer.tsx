@@ -63,10 +63,10 @@ export const Footer = () => {
 
   return (
     <Box
-      // style={{ position: 'absolute', bottom: 0 }}
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
       mt="64px"
+      width="100%"
     >
       <Container as={Stack} maxW={'6xl'} py={4} spacing={4} justify={'center'} align={'center'}>
         <Logo />

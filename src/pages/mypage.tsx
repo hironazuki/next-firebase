@@ -7,6 +7,7 @@ import { CTA } from '../components/CTA';
 
 import { useCurrentUser } from '@hooks/useCurrentUser';
 import { useRequireLogin } from '@hooks/useRequireLogin';
+import { Layout } from '@components/templates/Layout';
 const Mypage = () => {
   useRequireLogin();
   const { currentUser, isAuthChecking } = useCurrentUser();
@@ -50,5 +51,7 @@ const Mypage = () => {
     </>
   );
 };
+
+Mypage.Layout = Layout;
 
 export default Mypage;

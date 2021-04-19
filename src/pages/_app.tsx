@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
 
@@ -7,9 +8,10 @@ import '@lib/firebase';
 import { RecoilRoot } from 'recoil';
 import { Authentication } from '../../hooks/authentication';
 
-import { Layout } from '@components/templates/Layout';
+const Noop: FC = ({ children }) => <>{children}</>;
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const Layout = (Component as any).Layout || Noop;
   return (
     <>
       <Head>
@@ -18,13 +20,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <RecoilRoot>
         <ChakraProvider resetCSS theme={theme}>
           <Authentication />
-          {pageProps.isNotLayout ? (
+          <Layout pageProps={pageProps}>
             <Component {...pageProps} />
-          ) : (
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          )}
+          </Layout>
         </ChakraProvider>
       </RecoilRoot>
     </>
