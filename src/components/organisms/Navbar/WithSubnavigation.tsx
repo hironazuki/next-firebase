@@ -54,7 +54,7 @@ export const WithSubnavigation = () => {
   };
 
   return (
-    <Box width="100%" position="fixed">
+    <Box width="100%" position="fixed" zIndex={1000}>
       <Flex
         style={{
           backdropFilter: 'saturate(180%) blur(20px)',
@@ -283,9 +283,9 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'ホバーリンク',
     children: [
       {
-        label: 'hoge hoge',
-        subLabel: 'huga huga',
-        href: '#',
+        label: 'Menu付きページ',
+        subLabel: '画面サイズに合わせたメニューが出るページ',
+        href: '/menu',
       },
       {
         label: 'My Page',
