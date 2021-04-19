@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem } from '@chakra-ui/react';
+import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem, Box } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
 
 import { useCurrentUser } from '@hooks/useCurrentUser';
@@ -9,7 +9,7 @@ const Index = () => {
   const { currentUser } = useCurrentUser();
 
   return (
-    <>
+    <Box mx="1.5rem">
       {currentUser ? (
         <>
           <Text>あなたのユーザー名は{currentUser.displayName}です</Text>
@@ -19,7 +19,7 @@ const Index = () => {
       )}
       <Text>
         Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>typescript</Code>.s
+        <Code>typescript</Code>
       </Text>
 
       <List spacing={3} my={0}>
@@ -44,7 +44,7 @@ const Index = () => {
           </ChakraLink>
         </ListItem>
       </List>
-    </>
+    </Box>
   );
 };
 

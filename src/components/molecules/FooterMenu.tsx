@@ -3,7 +3,7 @@ import Link from '@components/Link';
 
 import { FaUserAlt } from 'react-icons/fa';
 
-export const CTA = () => {
+export const FooterMenu = () => {
   const { colorMode } = useColorMode();
 
   const bgColor = { light: 'blue.100', dark: 'blue.600' };

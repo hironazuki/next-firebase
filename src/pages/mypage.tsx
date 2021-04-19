@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem, Stack } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
 import { Hero } from '../components/Hero';
-import { CTA } from '../components/CTA';
 
 import { useCurrentUser } from '@hooks/useCurrentUser';
 import { useRequireLogin } from '@hooks/useRequireLogin';
@@ -47,7 +46,6 @@ const Mypage = () => {
           </ListItem>
         </List>
       </Stack>
-      <CTA />
     </>
   );
 };
