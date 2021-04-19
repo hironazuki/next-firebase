@@ -1,4 +1,4 @@
-// import firebase from 'firebase/app';
+import { VFC } from 'react';
 import {
   useDisclosure,
   Button,
@@ -13,7 +13,7 @@ import {
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 
-export const SignInModal = () => {
+export const SignInModal: VFC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>

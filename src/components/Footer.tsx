@@ -1,3 +1,4 @@
+import { ReactNode, VFC } from 'react';
 import {
   Box,
   chakra,
@@ -9,10 +10,9 @@ import {
   VisuallyHidden,
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { ReactNode } from 'react';
 
 // TODO: useColorModeValueをContainerのように変更
-const Logo = () => {
+const Logo: VFC = () => {
   return (
     <Text
       textAlign={'center'}
@@ -24,15 +24,14 @@ const Logo = () => {
   );
 };
 
-const SocialButton = ({
-  children,
-  label,
-  href,
-}: {
+type Props = {
   children: ReactNode;
   label: string;
   href: string;
-}) => {
+};
+
+const SocialButton: VFC<Props> = (props) => {
+  const { children, label, href } = props;
   return (
     <chakra.button
       bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
@@ -57,7 +56,7 @@ const SocialButton = ({
   );
 };
 
-export const Footer = () => {
+export const Footer: VFC = () => {
   const fromYear = 2021;
   const thisYear = new Date().getFullYear();
 

@@ -1,11 +1,16 @@
-import { ReactNode } from 'react';
+import { ReactNode, VFC } from 'react';
 
 import { Container } from '@components/Container';
 import { Main } from '@components/Main';
 import { WithSubnavigation } from '@components/organisms/navbar/WithSubnavigation';
 import { Footer } from '@components/Footer';
 
-export const Layout = ({ children }: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode;
+};
+
+export const Layout: VFC<Props> = (props) => {
+  const { children } = props;
   return (
     <Container height="100%">
       <WithSubnavigation />

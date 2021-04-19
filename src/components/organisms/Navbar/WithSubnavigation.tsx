@@ -1,3 +1,6 @@
+import { VFC } from 'react';
+import { useRouter } from 'next/router';
+import { useSetRecoilState } from 'recoil';
 import firebase from 'firebase/app';
 import {
   Box,
@@ -21,22 +24,16 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
-
-import Link from '@components/Link';
-
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
-
 import { FaUserAlt, FaSignOutAlt, FaListAlt } from 'react-icons/fa';
 
+import Link from '@components/Link';
 import { useCurrentUser } from '@hooks/useCurrentUser';
 import { DarkModeSwitch } from '@components/DarkModeSwitch';
-
 import { SignInModal } from '@components/organisms/SignInModal';
-import { useSetRecoilState } from 'recoil';
 import { currentUserState } from '@states/currentUser';
-import { useRouter } from 'next/router';
 
-export const WithSubnavigation = () => {
+export const WithSubnavigation: VFC = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser } = useCurrentUser();
   const setCurrentUser = useSetRecoilState(currentUserState);

@@ -1,6 +1,6 @@
 import { ReactNode, VFC, memo } from 'react';
-
 import { Stack } from '@chakra-ui/react';
+
 import { SideMenu } from '@components/molecules/SideMenu';
 import { FooterMenu } from '@components/molecules/FooterMenu';
 

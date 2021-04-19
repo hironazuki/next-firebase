@@ -1,6 +1,7 @@
+import { VFC } from 'react';
 import { Stack, StackProps } from '@chakra-ui/react';
 
-export const Main = (props: StackProps) => (
+export const Main: VFC<StackProps> = (props) => (
   <Stack
     flex="1 0 auto"
     display="block"
