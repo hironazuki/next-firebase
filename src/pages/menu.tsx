@@ -1,12 +1,13 @@
-// import Link from 'next/link';
-import { Hero } from '@components/Hero';
+import { Text } from '@chakra-ui/react';
+
 import { StickyMenu } from '@components/organisms/layout/StickyMenu';
 import { Layout } from '@components/templates/Layout';
 
 const Menu = () => {
   return (
     <StickyMenu>
-      <Hero />
+      <Text>md: サイドメニュー</Text>
+      <Text>sm: フッターメニュー</Text>
     </StickyMenu>
   );
 };

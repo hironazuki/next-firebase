@@ -1,9 +1,9 @@
 import { ReactNode, VFC } from 'react';
 
-import { Container } from '@components/Container';
-import { Main } from '@components/Main';
+import { Container } from '@components/organisms/layout/Container';
+import { Main } from '@components/organisms/layout/Main';
 import { WithSubnavigation } from '@components/organisms/navbar/WithSubnavigation';
-import { Footer } from '@components/Footer';
+import { Footer } from '@components/organisms/layout/Footer';
 
 type Props = {
   children: ReactNode;
