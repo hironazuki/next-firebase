@@ -19,11 +19,12 @@
     "strict": true,
     "target": "esnext",
     "paths": {
-      "@lib/*": ["lib/*"],
-      "@models/*": ["models/*"],
+      "@lib/*": ["src/lib/*"],
+      "@models/*": ["src/models/*"],
       "@components/*": ["src/components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@states/*": ["states/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@states/*": ["src/states/*"],
+      "@repository/*": ["src/repository/*"]
     }
   },
   "exclude": ["node_modules"],

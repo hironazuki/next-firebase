@@ -1,4 +1,5 @@
-import firebase from 'firebase/app';
+import { VFC } from 'react';
+import { useSetRecoilState } from 'recoil';
 import {
   Box,
   Flex,
@@ -21,43 +22,34 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
-
-import Link from '@components/Link';
-
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
-
 import { FaUserAlt, FaSignOutAlt, FaListAlt } from 'react-icons/fa';
 
+import Link from '@components/atoms/Link';
 import { useCurrentUser } from '@hooks/useCurrentUser';
-import { DarkModeSwitch } from '@components/DarkModeSwitch';
-
+import { DarkModeSwitch } from '@components/atoms/switch/DarkModeSwitch';
 import { SignInModal } from '@components/organisms/SignInModal';
-import { useSetRecoilState } from 'recoil';
 import { currentUserState } from '@states/currentUser';
-import { useRouter } from 'next/router';
+import { AuthRepository } from '@repository/auth';
 
-export const WithSubnavigation = () => {
+export const Header: VFC = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser } = useCurrentUser();
   const setCurrentUser = useSetRecoilState(currentUserState);
-  const router = useRouter();
 
   const LogOut = async () => {
-    await router.push('/');
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        window.location.reload();
-      });
     setCurrentUser(null);
+    AuthRepository.logout();
   };
 
   return (
-    <Box>
+    <Box width="100%" position="fixed" zIndex={1000}>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        style={{
+          backdropFilter: 'saturate(180%) blur(20px)',
+        }}
+        bg={useColorModeValue('clearWhite', 'clearBlack')}
+        color={useColorModeValue('black.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -280,9 +272,9 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'ホバーリンク',
     children: [
       {
-        label: 'hoge hoge',
-        subLabel: 'huga huga',
-        href: '#',
+        label: 'Menu付きページ',
+        subLabel: '画面サイズに合わせたメニューが出るページ',
+        href: '/menu',
       },
       {
         label: 'My Page',
