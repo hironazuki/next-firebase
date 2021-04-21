@@ -4,7 +4,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import theme from '../theme';
 import { AppProps } from 'next/app';
-import '@lib/firebase';
 import { RecoilRoot } from 'recoil';
 import { Authentication } from '@hooks/authentication';
 

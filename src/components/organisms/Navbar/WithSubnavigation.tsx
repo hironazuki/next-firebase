@@ -1,7 +1,5 @@
 import { VFC } from 'react';
-import { useRouter } from 'next/router';
 import { useSetRecoilState } from 'recoil';
-import firebase from 'firebase/app';
 import {
   Box,
   Flex,
@@ -32,22 +30,16 @@ import { useCurrentUser } from '@hooks/useCurrentUser';
 import { DarkModeSwitch } from '@components/atoms/switch/DarkModeSwitch';
 import { SignInModal } from '@components/organisms/SignInModal';
 import { currentUserState } from '@states/currentUser';
+import { AuthRepository } from '@repository/auth';
 
 export const WithSubnavigation: VFC = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser } = useCurrentUser();
   const setCurrentUser = useSetRecoilState(currentUserState);
-  const router = useRouter();
 
   const LogOut = async () => {
-    await router.push('/');
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        window.location.reload();
-      });
     setCurrentUser(null);
+    AuthRepository.logout();
   };
 
   return (

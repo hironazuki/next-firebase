@@ -23,7 +23,8 @@
       "@models/*": ["src/models/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@states/*": ["src/states/*"]
+      "@states/*": ["src/states/*"],
+      "@repository/*": ["src/repository/*"]
     }
   },
   "exclude": ["node_modules"],

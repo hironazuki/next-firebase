@@ -1,20 +1,14 @@
 import { useState, VFC } from 'react';
-import firebase from 'firebase/app';
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthRepository } from '@repository/auth';
 
 export const GoogleSignInButton: VFC<ButtonProps> = (props) => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
-  const LogIn = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+  const LogIn = async () => {
     setIsProcessing(true);
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        return result;
-      })
+    await AuthRepository.loginGoogle()
       .catch(() => {
         // console.log(error);
         // const errorCode = error.code;
