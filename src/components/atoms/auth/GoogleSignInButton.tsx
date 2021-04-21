@@ -1,39 +1,31 @@
-import { useState } from 'react';
-import firebase from 'firebase/app';
+import { useState, VFC } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthRepository } from '@repository/auth';
 
-export const GoogleSignInButton = (props: ButtonProps) => {
+export const GoogleSignInButton: VFC<ButtonProps> = (props) => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
-  const LogIn = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+  const LogIn = async () => {
     setIsProcessing(true);
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(function (result: any) {
-        setIsProcessing(false);
-        return result;
+    await AuthRepository.loginGoogle()
+      .catch(() => {
+        // console.log(error);
+        // const errorCode = error.code;
+        // console.log(errorCode);
+        // const errorMessage = error.message;
+        // console.log(errorMessage);
       })
-      .catch(function (error) {
-        console.log(error);
-        const errorCode = error.code;
-        console.log(errorCode);
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
+      .finally(() => setIsProcessing(false));
   };
   return (
     <Button
-      // w={'full'}
       w={'max-content'}
-      bgColor={''}
       isLoading={isProcessing}
-      colorScheme="blue"
+      colorScheme="gray"
       leftIcon={<FcGoogle />}
       loadingText="ログイン処理中..."
-      variant="outline"
+      variant="solid"
       {...props}
       onClick={() => LogIn()}
     >

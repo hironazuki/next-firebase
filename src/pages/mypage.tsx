@@ -1,12 +1,10 @@
 import Link from 'next/link';
-
 import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem, Stack } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
-import { Hero } from '../components/Hero';
-import { CTA } from '../components/CTA';
 
 import { useCurrentUser } from '@hooks/useCurrentUser';
 import { useRequireLogin } from '@hooks/useRequireLogin';
+import { Layout } from '@components/templates/Layout';
 const Mypage = () => {
   useRequireLogin();
   const { currentUser, isAuthChecking } = useCurrentUser();
@@ -17,7 +15,7 @@ const Mypage = () => {
   return (
     <>
       <Stack spacing="1.5rem" px="1rem" minHeight="100vh">
-        {currentUser && <Hero title={`あなたのユーザー名は${currentUser.uid}です`} />}
+        {currentUser && <Text>{`あなたのユーザー名は${currentUser.uid}です`}</Text>}
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
           <Code>typescript</Code>.
@@ -46,9 +44,10 @@ const Mypage = () => {
           </ListItem>
         </List>
       </Stack>
-      <CTA />
     </>
   );
 };
+
+Mypage.Layout = Layout;
 
 export default Mypage;
