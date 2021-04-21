@@ -32,7 +32,7 @@ import { SignInModal } from '@components/organisms/SignInModal';
 import { currentUserState } from '@states/currentUser';
 import { AuthRepository } from '@repository/auth';
 
-export const WithSubnavigation: VFC = () => {
+export const Header: VFC = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { currentUser } = useCurrentUser();
   const setCurrentUser = useSetRecoilState(currentUserState);
