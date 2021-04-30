@@ -6,7 +6,9 @@ export const AuthRepository = {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
 
-      const userCredential = await Firebase.instance.auth.signInWithPopup(provider);
+      await Firebase.instance.auth.signInWithRedirect(provider);
+      const userCredential = await Firebase.instance.auth.getRedirectResult();
+
       return userCredential;
     } catch (e) {
       throw new Error('loginに失敗しました');

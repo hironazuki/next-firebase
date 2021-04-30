@@ -20,7 +20,7 @@ export const GoogleSignInButton: VFC<ButtonProps> = (props) => {
   };
   return (
     <Button
-      w={'max-content'}
+      w={'full'}
       isLoading={isProcessing}
       colorScheme="gray"
       leftIcon={<FcGoogle />}
