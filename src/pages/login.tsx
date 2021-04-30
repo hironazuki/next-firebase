@@ -2,6 +2,7 @@
 import { Flex, Heading, Stack, Text, useColorMode } from '@chakra-ui/react';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
+import { TwitterSignInButton } from '@components/atoms/auth/TwitterSignInButton';
 import Link from '@components/atoms/Link';
 import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 
@@ -13,7 +14,7 @@ const Login = () => {
 
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-      <Flex flex={{ base: '1', md: '1' }} bg={bgColor[colorMode]}>
+      <Flex flex={{ base: '1.5', md: '1' }} bg={bgColor[colorMode]}>
         <Stack spacing={4} w={'full'} align={'center'} justify={'center'}>
           <Link href="/">
             <Heading fontSize={'2xl'}>Next-firebase-auth</Heading>
@@ -28,6 +29,7 @@ const Login = () => {
         <Stack spacing={4} w={'full'} maxW={'md'}>
           <Heading fontSize={'2xl'}>Sign in to your account</Heading>
           <GoogleSignInButton />
+          <TwitterSignInButton />
         </Stack>
       </Flex>
     </Stack>

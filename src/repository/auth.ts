@@ -14,6 +14,17 @@ export const AuthRepository = {
       throw new Error('loginに失敗しました');
     }
   },
+  loginTwitter: async (): Promise<firebase.auth.UserCredential | null> => {
+    try {
+      const provider = new firebase.auth.TwitterAuthProvider();
+
+      await Firebase.instance.auth.signInWithRedirect(provider);
+      const userCredential = await Firebase.instance.auth.getRedirectResult();
+      return userCredential;
+    } catch (e) {
+      throw new Error('loginに失敗しました');
+    }
+  },
   checkAlreadyLogin: ({
     successHandle,
     errorHandle,
