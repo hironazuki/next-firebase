@@ -25,6 +25,14 @@ export const AuthRepository = {
       throw new Error('loginに失敗しました');
     }
   },
+  loginAnonymous: async (): Promise<firebase.auth.UserCredential | null> => {
+    try {
+      const userCredential = await Firebase.instance.auth.signInAnonymously();
+      return userCredential;
+    } catch (e) {
+      throw new Error('loginに失敗しました');
+    }
+  },
   checkAlreadyLogin: ({
     successHandle,
     errorHandle,

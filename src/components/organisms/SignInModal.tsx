@@ -34,6 +34,7 @@ export const SignInModal: VFC = () => {
             <Stack>
               <GoogleSignInButton />
               <TwitterSignInButton />
+              <AnonymousSignInButton />
             </Stack>
           </ModalBody>
 

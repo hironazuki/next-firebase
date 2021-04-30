@@ -3,6 +3,7 @@ import { Flex, Heading, Stack, Text, useColorMode } from '@chakra-ui/react';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
 import { TwitterSignInButton } from '@components/atoms/auth/TwitterSignInButton';
+import { AnonymousSignInButton } from '@components/atoms/auth/AnonymousSignInButton';
 import Link from '@components/atoms/Link';
 import { useIsAlreadylogged } from '@hooks/useIsAlreadyLogged';
 
@@ -30,6 +31,7 @@ const Login = () => {
           <Heading fontSize={'2xl'}>Sign in to your account</Heading>
           <GoogleSignInButton />
           <TwitterSignInButton />
+          <AnonymousSignInButton />
         </Stack>
       </Flex>
     </Stack>

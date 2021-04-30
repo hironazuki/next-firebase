@@ -12,7 +12,7 @@ export const Authentication = memo(() => {
       successHandle: (user) => {
         setCurrentUser({
           uid: user.uid,
-          displayName: user.displayName as string,
+          displayName: user.displayName || user.uid.slice(0, 5),
           photoUrl: user.photoURL as string,
         });
       },
