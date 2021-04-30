@@ -10,7 +10,6 @@ import {
   ModalBody,
   ModalFooter,
   Stack,
-  Text,
 } from '@chakra-ui/react';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';

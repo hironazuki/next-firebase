@@ -1,7 +1,7 @@
 import { useState, VFC } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
-import { AuthRepository } from '@repository/auth';
+import { AuthRepository } from '@infra/firebase/auth';
 
 export const GoogleSignInButton: VFC<ButtonProps> = (props) => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);

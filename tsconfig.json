@@ -24,7 +24,7 @@
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@states/*": ["src/states/*"],
-      "@repository/*": ["src/repository/*"]
+      "@infra/*": ["src/infra/*"]
     }
   },
   "exclude": ["node_modules"],

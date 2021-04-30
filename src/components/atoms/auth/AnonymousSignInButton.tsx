@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
-import { AuthRepository } from '@repository/auth';
+import { AuthRepository } from '@infra/firebase/auth';
 
 export const AnonymousSignInButton: VFC<ButtonProps> = (props) => {
   const LogIn = async () => {
