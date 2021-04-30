@@ -1,14 +1,14 @@
 import { useState, VFC } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
-import { FcGoogle } from 'react-icons/fc';
+import { FaTwitter } from 'react-icons/fa';
 import { AuthRepository } from '@infra/firebase/auth';
 
-export const GoogleSignInButton: VFC<ButtonProps> = (props) => {
+export const TwitterSignInButton: VFC<ButtonProps> = (props) => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
   const LogIn = async () => {
     setIsProcessing(true);
-    await AuthRepository.loginGoogle()
+    await AuthRepository.loginTwitter()
       .catch(() => {
         // console.log(error);
         // const errorCode = error.code;
@@ -22,14 +22,14 @@ export const GoogleSignInButton: VFC<ButtonProps> = (props) => {
     <Button
       w={'full'}
       isLoading={isProcessing}
-      colorScheme="gray"
-      leftIcon={<FcGoogle />}
+      colorScheme="twitter"
+      leftIcon={<FaTwitter />}
       loadingText="ログイン処理中..."
       variant="solid"
       {...props}
       onClick={() => LogIn()}
     >
-      Google で ログイン
+      Twitter で ログイン
     </Button>
   );
 };

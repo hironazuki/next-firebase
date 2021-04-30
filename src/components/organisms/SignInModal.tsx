@@ -9,9 +9,12 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Stack,
 } from '@chakra-ui/react';
 
 import { GoogleSignInButton } from '@components/atoms/auth/GoogleSignInButton';
+import { TwitterSignInButton } from '@components/atoms/auth/TwitterSignInButton';
+import { AnonymousSignInButton } from '@components/atoms/auth/AnonymousSignInButton';
 
 export const SignInModal: VFC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,7 +30,11 @@ export const SignInModal: VFC = () => {
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody textAlign="center">
-            <GoogleSignInButton />
+            <Stack>
+              <GoogleSignInButton />
+              <TwitterSignInButton />
+              <AnonymousSignInButton />
+            </Stack>
           </ModalBody>
 
           <ModalFooter>{/* <Button variant="ghost">Secondary Action</Button> */}</ModalFooter>

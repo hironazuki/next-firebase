@@ -30,7 +30,7 @@ import { useCurrentUser } from '@hooks/useCurrentUser';
 import { DarkModeSwitch } from '@components/atoms/switch/DarkModeSwitch';
 import { SignInModal } from '@components/organisms/SignInModal';
 import { currentUserState } from '@states/currentUser';
-import { AuthRepository } from '@repository/auth';
+import { AuthRepository } from '@infra/firebase/auth';
 
 export const Header: VFC = () => {
   const { isOpen, onToggle } = useDisclosure();
