@@ -6,7 +6,28 @@ export const AuthRepository = {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
 
-      const userCredential = await Firebase.instance.auth.signInWithPopup(provider);
+      await Firebase.instance.auth.signInWithRedirect(provider);
+      const userCredential = await Firebase.instance.auth.getRedirectResult();
+
+      return userCredential;
+    } catch (e) {
+      throw new Error('loginに失敗しました');
+    }
+  },
+  loginTwitter: async (): Promise<firebase.auth.UserCredential | null> => {
+    try {
+      const provider = new firebase.auth.TwitterAuthProvider();
+
+      await Firebase.instance.auth.signInWithRedirect(provider);
+      const userCredential = await Firebase.instance.auth.getRedirectResult();
+      return userCredential;
+    } catch (e) {
+      throw new Error('loginに失敗しました');
+    }
+  },
+  loginAnonymous: async (): Promise<firebase.auth.UserCredential | null> => {
+    try {
+      const userCredential = await Firebase.instance.auth.signInAnonymously();
       return userCredential;
     } catch (e) {
       throw new Error('loginに失敗しました');
