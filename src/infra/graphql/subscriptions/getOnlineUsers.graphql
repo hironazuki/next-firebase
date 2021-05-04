@@ -1,0 +1,8 @@
+subscription GET_ONLINE_USERS {
+  online_users(order_by: { user: { name: asc } }) {
+    user {
+      id
+      name
+    }
+  }
+}
