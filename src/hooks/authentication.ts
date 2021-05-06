@@ -20,6 +20,7 @@ export const Authentication = memo(() => {
             displayName: user.displayName || user.uid.slice(0, 5),
             photoUrl: user.photoURL as string,
             token: token,
+            refresh_token: user.refreshToken,
           });
         } else {
           // Tokenのリフレッシュを検知するためにコールバックを設定する
@@ -31,6 +32,7 @@ export const Authentication = memo(() => {
               displayName: user.displayName || user.uid.slice(0, 5),
               photoUrl: user.photoURL as string,
               token: token,
+              refresh_token: user.refreshToken,
             });
           });
         }

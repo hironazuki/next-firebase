@@ -6,6 +6,7 @@ import theme from '../theme';
 import { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { Authentication } from '@hooks/authentication';
+import { ApolloProvider } from '@lib/ApolloProvider';
 
 const Noop: FC = ({ children }) => <>{children}</>;
 
@@ -18,11 +19,13 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <RecoilRoot>
         <Authentication />
-        <ChakraProvider resetCSS theme={theme}>
-          <Layout pageProps={pageProps}>
-            <Component {...pageProps} />
-          </Layout>
-        </ChakraProvider>
+        <ApolloProvider>
+          <ChakraProvider resetCSS theme={theme}>
+            <Layout pageProps={pageProps}>
+              <Component {...pageProps} />
+            </Layout>
+          </ChakraProvider>
+        </ApolloProvider>
       </RecoilRoot>
     </>
   );

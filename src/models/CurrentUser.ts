@@ -3,4 +3,5 @@ export interface CurrentUser {
   displayName: string;
   photoUrl: string;
   token: string;
+  refresh_token: string;
 }
