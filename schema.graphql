@@ -55,6 +55,32 @@ type loved_language {
 }
 
 """
+aggregated selection of "loved_language"
+"""
+type loved_language_aggregate {
+  aggregate: loved_language_aggregate_fields
+  nodes: [loved_language!]!
+}
+
+"""
+aggregate fields of "loved_language"
+"""
+type loved_language_aggregate_fields {
+  count(columns: [loved_language_select_column!], distinct: Boolean): Int
+  max: loved_language_max_fields
+  min: loved_language_min_fields
+}
+
+"""
+order by aggregate values of table "loved_language"
+"""
+input loved_language_aggregate_order_by {
+  count: order_by
+  max: loved_language_max_order_by
+  min: loved_language_min_order_by
+}
+
+"""
 input type for inserting array relation for remote table "loved_language"
 """
 input loved_language_arr_rel_insert_input {
@@ -80,6 +106,34 @@ input type for inserting data into table "loved_language"
 input loved_language_insert_input {
   name: String
   programming_language: programming_language_obj_rel_insert_input
+}
+
+"""aggregate max on columns"""
+type loved_language_max_fields {
+  name: String
+  user_id: String
+}
+
+"""
+order by max() on columns of table "loved_language"
+"""
+input loved_language_max_order_by {
+  name: order_by
+  user_id: order_by
+}
+
+"""aggregate min on columns"""
+type loved_language_min_fields {
+  name: String
+  user_id: String
+}
+
+"""
+order by min() on columns of table "loved_language"
+"""
+input loved_language_min_order_by {
+  name: order_by
+  user_id: order_by
 }
 
 """
@@ -297,6 +351,41 @@ enum order_by {
 columns and relationships of "programming_language"
 """
 type programming_language {
+  """An array relationship"""
+  loved_languages(
+    """distinct select on columns"""
+    distinct_on: [loved_language_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [loved_language_order_by!]
+
+    """filter the rows returned"""
+    where: loved_language_bool_exp
+  ): [loved_language!]!
+
+  """An aggregated array relationship"""
+  loved_languages_aggregate(
+    """distinct select on columns"""
+    distinct_on: [loved_language_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [loved_language_order_by!]
+
+    """filter the rows returned"""
+    where: loved_language_bool_exp
+  ): loved_language_aggregate!
   name: String!
   vote_count: Int!
 }
@@ -316,6 +405,7 @@ input programming_language_bool_exp {
   _and: [programming_language_bool_exp]
   _not: programming_language_bool_exp
   _or: [programming_language_bool_exp]
+  loved_languages: loved_language_bool_exp
   name: String_comparison_exp
   vote_count: Int_comparison_exp
 }
@@ -339,6 +429,7 @@ input programming_language_inc_input {
 input type for inserting data into table "programming_language"
 """
 input programming_language_insert_input {
+  loved_languages: loved_language_arr_rel_insert_input
   name: String
 }
 
@@ -374,6 +465,7 @@ input programming_language_on_conflict {
 ordering options when selecting data from "programming_language"
 """
 input programming_language_order_by {
+  loved_languages_aggregate: loved_language_aggregate_order_by
   name: order_by
   vote_count: order_by
 }
@@ -432,6 +524,26 @@ type query_root {
     """filter the rows returned"""
     where: loved_language_bool_exp
   ): [loved_language!]!
+
+  """
+  fetch aggregated fields from the table: "loved_language"
+  """
+  loved_language_aggregate(
+    """distinct select on columns"""
+    distinct_on: [loved_language_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [loved_language_order_by!]
+
+    """filter the rows returned"""
+    where: loved_language_bool_exp
+  ): loved_language_aggregate!
 
   """fetch data from the table: "loved_language" using primary key columns"""
   loved_language_by_pk(name: String!, user_id: String!): loved_language
@@ -526,6 +638,26 @@ type subscription_root {
     """filter the rows returned"""
     where: loved_language_bool_exp
   ): [loved_language!]!
+
+  """
+  fetch aggregated fields from the table: "loved_language"
+  """
+  loved_language_aggregate(
+    """distinct select on columns"""
+    distinct_on: [loved_language_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [loved_language_order_by!]
+
+    """filter the rows returned"""
+    where: loved_language_bool_exp
+  ): loved_language_aggregate!
 
   """fetch data from the table: "loved_language" using primary key columns"""
   loved_language_by_pk(name: String!, user_id: String!): loved_language
@@ -694,6 +826,7 @@ input type for updating data in table "users"
 """
 input users_set_input {
   last_seen: timestamptz
+  name: String
 }
 
 """
@@ -702,4 +835,7 @@ update columns of table "users"
 enum users_update_column {
   """column name"""
   last_seen
+
+  """column name"""
+  name
 }

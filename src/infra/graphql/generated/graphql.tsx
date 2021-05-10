@@ -58,6 +58,35 @@ export type Loved_Language = {
   user_id: Scalars['String'];
 };
 
+/** aggregated selection of "loved_language" */
+export type Loved_Language_Aggregate = {
+  __typename?: 'loved_language_aggregate';
+  aggregate?: Maybe<Loved_Language_Aggregate_Fields>;
+  nodes: Array<Loved_Language>;
+};
+
+/** aggregate fields of "loved_language" */
+export type Loved_Language_Aggregate_Fields = {
+  __typename?: 'loved_language_aggregate_fields';
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Loved_Language_Max_Fields>;
+  min?: Maybe<Loved_Language_Min_Fields>;
+};
+
+
+/** aggregate fields of "loved_language" */
+export type Loved_Language_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Loved_Language_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "loved_language" */
+export type Loved_Language_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Loved_Language_Max_Order_By>;
+  min?: Maybe<Loved_Language_Min_Order_By>;
+};
+
 /** input type for inserting array relation for remote table "loved_language" */
 export type Loved_Language_Arr_Rel_Insert_Input = {
   data: Array<Loved_Language_Insert_Input>;
@@ -78,6 +107,32 @@ export type Loved_Language_Bool_Exp = {
 export type Loved_Language_Insert_Input = {
   name?: Maybe<Scalars['String']>;
   programming_language?: Maybe<Programming_Language_Obj_Rel_Insert_Input>;
+};
+
+/** aggregate max on columns */
+export type Loved_Language_Max_Fields = {
+  __typename?: 'loved_language_max_fields';
+  name?: Maybe<Scalars['String']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "loved_language" */
+export type Loved_Language_Max_Order_By = {
+  name?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Loved_Language_Min_Fields = {
+  __typename?: 'loved_language_min_fields';
+  name?: Maybe<Scalars['String']>;
+  user_id?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "loved_language" */
+export type Loved_Language_Min_Order_By = {
+  name?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "loved_language" */
@@ -263,8 +318,32 @@ export enum Order_By {
 /** columns and relationships of "programming_language" */
 export type Programming_Language = {
   __typename?: 'programming_language';
+  /** An array relationship */
+  loved_languages: Array<Loved_Language>;
+  /** An aggregated array relationship */
+  loved_languages_aggregate: Loved_Language_Aggregate;
   name: Scalars['String'];
   vote_count: Scalars['Int'];
+};
+
+
+/** columns and relationships of "programming_language" */
+export type Programming_LanguageLoved_LanguagesArgs = {
+  distinct_on?: Maybe<Array<Loved_Language_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Loved_Language_Order_By>>;
+  where?: Maybe<Loved_Language_Bool_Exp>;
+};
+
+
+/** columns and relationships of "programming_language" */
+export type Programming_LanguageLoved_Languages_AggregateArgs = {
+  distinct_on?: Maybe<Array<Loved_Language_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Loved_Language_Order_By>>;
+  where?: Maybe<Loved_Language_Bool_Exp>;
 };
 
 /** input type for inserting array relation for remote table "programming_language" */
@@ -278,6 +357,7 @@ export type Programming_Language_Bool_Exp = {
   _and?: Maybe<Array<Maybe<Programming_Language_Bool_Exp>>>;
   _not?: Maybe<Programming_Language_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Programming_Language_Bool_Exp>>>;
+  loved_languages?: Maybe<Loved_Language_Bool_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   vote_count?: Maybe<Int_Comparison_Exp>;
 };
@@ -295,6 +375,7 @@ export type Programming_Language_Inc_Input = {
 
 /** input type for inserting data into table "programming_language" */
 export type Programming_Language_Insert_Input = {
+  loved_languages?: Maybe<Loved_Language_Arr_Rel_Insert_Input>;
   name?: Maybe<Scalars['String']>;
 };
 
@@ -322,6 +403,7 @@ export type Programming_Language_On_Conflict = {
 
 /** ordering options when selecting data from "programming_language" */
 export type Programming_Language_Order_By = {
+  loved_languages_aggregate?: Maybe<Loved_Language_Aggregate_Order_By>;
   name?: Maybe<Order_By>;
   vote_count?: Maybe<Order_By>;
 };
@@ -355,6 +437,8 @@ export type Query_Root = {
   __typename?: 'query_root';
   /** fetch data from the table: "loved_language" */
   loved_language: Array<Loved_Language>;
+  /** fetch aggregated fields from the table: "loved_language" */
+  loved_language_aggregate: Loved_Language_Aggregate;
   /** fetch data from the table: "loved_language" using primary key columns */
   loved_language_by_pk?: Maybe<Loved_Language>;
   /** fetch data from the table: "online_users" */
@@ -372,6 +456,16 @@ export type Query_Root = {
 
 /** query root */
 export type Query_RootLoved_LanguageArgs = {
+  distinct_on?: Maybe<Array<Loved_Language_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Loved_Language_Order_By>>;
+  where?: Maybe<Loved_Language_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootLoved_Language_AggregateArgs = {
   distinct_on?: Maybe<Array<Loved_Language_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -433,6 +527,8 @@ export type Subscription_Root = {
   __typename?: 'subscription_root';
   /** fetch data from the table: "loved_language" */
   loved_language: Array<Loved_Language>;
+  /** fetch aggregated fields from the table: "loved_language" */
+  loved_language_aggregate: Loved_Language_Aggregate;
   /** fetch data from the table: "loved_language" using primary key columns */
   loved_language_by_pk?: Maybe<Loved_Language>;
   /** fetch data from the table: "online_users" */
@@ -450,6 +546,16 @@ export type Subscription_Root = {
 
 /** subscription root */
 export type Subscription_RootLoved_LanguageArgs = {
+  distinct_on?: Maybe<Array<Loved_Language_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Loved_Language_Order_By>>;
+  where?: Maybe<Loved_Language_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootLoved_Language_AggregateArgs = {
   distinct_on?: Maybe<Array<Loved_Language_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -580,13 +686,85 @@ export enum Users_Select_Column {
 /** input type for updating data in table "users" */
 export type Users_Set_Input = {
   last_seen?: Maybe<Scalars['timestamptz']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 /** update columns of table "users" */
 export enum Users_Update_Column {
   /** column name */
-  LastSeen = 'last_seen'
+  LastSeen = 'last_seen',
+  /** column name */
+  Name = 'name'
 }
+
+export type CurrentUserNameMutationVariables = Exact<{
+  id: Scalars['String'];
+  name: Scalars['String'];
+}>;
+
+
+export type CurrentUserNameMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_users_by_pk?: Maybe<(
+    { __typename?: 'users' }
+    & Pick<Users, 'id' | 'name'>
+  )> }
+);
+
+export type LoveMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type LoveMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_loved_language?: Maybe<(
+    { __typename?: 'loved_language_mutation_response' }
+    & Pick<Loved_Language_Mutation_Response, 'affected_rows'>
+  )> }
+);
+
+export type UnloveMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type UnloveMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_loved_language?: Maybe<(
+    { __typename?: 'loved_language_mutation_response' }
+    & Pick<Loved_Language_Mutation_Response, 'affected_rows'>
+  )> }
+);
+
+export type VoteMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type VoteMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_programming_language?: Maybe<(
+    { __typename?: 'programming_language_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'programming_language' }
+      & Pick<Programming_Language, 'vote_count'>
+    )> }
+  )> }
+);
+
+export type GetCurrentUserNameQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type GetCurrentUserNameQuery = (
+  { __typename?: 'query_root' }
+  & { users_by_pk?: Maybe<(
+    { __typename?: 'users' }
+    & Pick<Users, 'id' | 'name'>
+  )> }
+);
 
 export type Get_Online_UsersSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
@@ -602,7 +780,197 @@ export type Get_Online_UsersSubscription = (
   )> }
 );
 
+export type Pl_With_LoveSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
+
+export type Pl_With_LoveSubscription = (
+  { __typename?: 'subscription_root' }
+  & { programming_language: Array<(
+    { __typename?: 'programming_language' }
+    & Pick<Programming_Language, 'name' | 'vote_count'>
+    & { loved_languages: Array<(
+      { __typename?: 'loved_language' }
+      & { user: (
+        { __typename?: 'users' }
+        & Pick<Users, 'id' | 'name'>
+      ) }
+    )> }
+  )> }
+);
+
+
+export const CurrentUserNameDocument = gql`
+    mutation CurrentUserName($id: String!, $name: String!) {
+  update_users_by_pk(pk_columns: {id: $id}, _set: {name: $name}) {
+    id
+    name
+  }
+}
+    `;
+export type CurrentUserNameMutationFn = Apollo.MutationFunction<CurrentUserNameMutation, CurrentUserNameMutationVariables>;
+
+/**
+ * __useCurrentUserNameMutation__
+ *
+ * To run a mutation, you first call `useCurrentUserNameMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserNameMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [currentUserNameMutation, { data, loading, error }] = useCurrentUserNameMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useCurrentUserNameMutation(baseOptions?: Apollo.MutationHookOptions<CurrentUserNameMutation, CurrentUserNameMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CurrentUserNameMutation, CurrentUserNameMutationVariables>(CurrentUserNameDocument, options);
+      }
+export type CurrentUserNameMutationHookResult = ReturnType<typeof useCurrentUserNameMutation>;
+export type CurrentUserNameMutationResult = Apollo.MutationResult<CurrentUserNameMutation>;
+export type CurrentUserNameMutationOptions = Apollo.BaseMutationOptions<CurrentUserNameMutation, CurrentUserNameMutationVariables>;
+export const LoveDocument = gql`
+    mutation Love($name: String!) {
+  insert_loved_language(objects: {name: $name}) {
+    affected_rows
+  }
+}
+    `;
+export type LoveMutationFn = Apollo.MutationFunction<LoveMutation, LoveMutationVariables>;
+
+/**
+ * __useLoveMutation__
+ *
+ * To run a mutation, you first call `useLoveMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoveMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loveMutation, { data, loading, error }] = useLoveMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useLoveMutation(baseOptions?: Apollo.MutationHookOptions<LoveMutation, LoveMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LoveMutation, LoveMutationVariables>(LoveDocument, options);
+      }
+export type LoveMutationHookResult = ReturnType<typeof useLoveMutation>;
+export type LoveMutationResult = Apollo.MutationResult<LoveMutation>;
+export type LoveMutationOptions = Apollo.BaseMutationOptions<LoveMutation, LoveMutationVariables>;
+export const UnloveDocument = gql`
+    mutation Unlove($name: String!) {
+  delete_loved_language(where: {name: {_eq: $name}}) {
+    affected_rows
+  }
+}
+    `;
+export type UnloveMutationFn = Apollo.MutationFunction<UnloveMutation, UnloveMutationVariables>;
+
+/**
+ * __useUnloveMutation__
+ *
+ * To run a mutation, you first call `useUnloveMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUnloveMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [unloveMutation, { data, loading, error }] = useUnloveMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useUnloveMutation(baseOptions?: Apollo.MutationHookOptions<UnloveMutation, UnloveMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UnloveMutation, UnloveMutationVariables>(UnloveDocument, options);
+      }
+export type UnloveMutationHookResult = ReturnType<typeof useUnloveMutation>;
+export type UnloveMutationResult = Apollo.MutationResult<UnloveMutation>;
+export type UnloveMutationOptions = Apollo.BaseMutationOptions<UnloveMutation, UnloveMutationVariables>;
+export const VoteDocument = gql`
+    mutation Vote($name: String!) {
+  update_programming_language(_inc: {vote_count: 1}, where: {name: {_eq: $name}}) {
+    returning {
+      vote_count
+    }
+  }
+}
+    `;
+export type VoteMutationFn = Apollo.MutationFunction<VoteMutation, VoteMutationVariables>;
+
+/**
+ * __useVoteMutation__
+ *
+ * To run a mutation, you first call `useVoteMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useVoteMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [voteMutation, { data, loading, error }] = useVoteMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useVoteMutation(baseOptions?: Apollo.MutationHookOptions<VoteMutation, VoteMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<VoteMutation, VoteMutationVariables>(VoteDocument, options);
+      }
+export type VoteMutationHookResult = ReturnType<typeof useVoteMutation>;
+export type VoteMutationResult = Apollo.MutationResult<VoteMutation>;
+export type VoteMutationOptions = Apollo.BaseMutationOptions<VoteMutation, VoteMutationVariables>;
+export const GetCurrentUserNameDocument = gql`
+    query getCurrentUserName($id: String!) {
+  users_by_pk(id: $id) {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useGetCurrentUserNameQuery__
+ *
+ * To run a query within a React component, call `useGetCurrentUserNameQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCurrentUserNameQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCurrentUserNameQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetCurrentUserNameQuery(baseOptions: Apollo.QueryHookOptions<GetCurrentUserNameQuery, GetCurrentUserNameQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCurrentUserNameQuery, GetCurrentUserNameQueryVariables>(GetCurrentUserNameDocument, options);
+      }
+export function useGetCurrentUserNameLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCurrentUserNameQuery, GetCurrentUserNameQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCurrentUserNameQuery, GetCurrentUserNameQueryVariables>(GetCurrentUserNameDocument, options);
+        }
+export type GetCurrentUserNameQueryHookResult = ReturnType<typeof useGetCurrentUserNameQuery>;
+export type GetCurrentUserNameLazyQueryHookResult = ReturnType<typeof useGetCurrentUserNameLazyQuery>;
+export type GetCurrentUserNameQueryResult = Apollo.QueryResult<GetCurrentUserNameQuery, GetCurrentUserNameQueryVariables>;
 export const Get_Online_UsersDocument = gql`
     subscription GET_ONLINE_USERS {
   online_users(order_by: {user: {name: asc}}) {
@@ -635,3 +1003,39 @@ export function useGet_Online_UsersSubscription(baseOptions?: Apollo.Subscriptio
       }
 export type Get_Online_UsersSubscriptionHookResult = ReturnType<typeof useGet_Online_UsersSubscription>;
 export type Get_Online_UsersSubscriptionResult = Apollo.SubscriptionResult<Get_Online_UsersSubscription>;
+export const Pl_With_LoveDocument = gql`
+    subscription PL_WITH_LOVE {
+  programming_language(order_by: {vote_count: desc}) {
+    name
+    vote_count
+    loved_languages {
+      user {
+        id
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __usePl_With_LoveSubscription__
+ *
+ * To run a query within a React component, call `usePl_With_LoveSubscription` and pass it any options that fit your needs.
+ * When your component renders, `usePl_With_LoveSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePl_With_LoveSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePl_With_LoveSubscription(baseOptions?: Apollo.SubscriptionHookOptions<Pl_With_LoveSubscription, Pl_With_LoveSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<Pl_With_LoveSubscription, Pl_With_LoveSubscriptionVariables>(Pl_With_LoveDocument, options);
+      }
+export type Pl_With_LoveSubscriptionHookResult = ReturnType<typeof usePl_With_LoveSubscription>;
+export type Pl_With_LoveSubscriptionResult = Apollo.SubscriptionResult<Pl_With_LoveSubscription>;

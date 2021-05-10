@@ -1,0 +1,5 @@
+mutation Love($name: String!) {
+  insert_loved_language(objects: { name: $name }) {
+    affected_rows
+  }
+}

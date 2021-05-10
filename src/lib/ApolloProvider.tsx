@@ -54,7 +54,7 @@ const createApolloClient = (
         // uri: 'wss://next-firebase-auth.herokuapp.com/v1/graphql',
         options: {
           reconnect: true,
-          connectionParams: { headers },
+          // connectionParams: { headers },
         },
       })
     : null;
@@ -125,17 +125,7 @@ const createApolloClient = (
 
   return new ApolloClient({
     link: from([refreshLink, authLink, splitLink]),
-    cache: new InMemoryCache({
-      typePolicies: {
-        Query: {
-          fields: {
-            project: {
-              merge: true,
-            },
-          },
-        },
-      },
-    }),
+    cache: new InMemoryCache({}),
   });
 };
 

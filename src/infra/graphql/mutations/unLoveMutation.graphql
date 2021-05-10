@@ -1,0 +1,5 @@
+mutation Unlove($name: String!) {
+  delete_loved_language(where: { name: { _eq: $name } }) {
+    affected_rows
+  }
+}

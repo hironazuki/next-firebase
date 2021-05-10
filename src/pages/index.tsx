@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@components/atoms/Link';
 import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem, Box } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
 
@@ -25,12 +25,19 @@ const Index = () => {
       <List spacing={3} my={0}>
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
-          <Link href="/mypage">
-            <ChakraLink flexGrow={1} mr={2}>
-              My Page <LinkIcon />
-            </ChakraLink>
+          <Link href="/mypage" flexGrow={1} mr={2}>
+            {/* <ChakraLink flexGrow={1} mr={2}> */}
+            My Page <LinkIcon />
+            {/* </ChakraLink> */}
           </Link>
         </ListItem>
+        <>
+          <ListIcon as={CheckCircleIcon} color="green.500" />
+          <Link href="/hasura" flexGrow={1} mr={2}>
+            hasura <LinkIcon />
+          </Link>
+        </>
+
         <ListItem>
           <ListIcon as={CheckCircleIcon} color="green.500" />
           <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mr={2}>
