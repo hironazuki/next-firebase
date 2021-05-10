@@ -16,7 +16,7 @@ import {
   useUnloveMutation,
   usePl_With_LoveSubscription,
   useVoteMutation,
-} from '@infra/graphql/generated/graphql';
+} from '@repository/graphql/generated/graphql';
 import { currentUserState } from '@states/currentUser';
 import Link from 'next/link';
 import { useState } from 'react';

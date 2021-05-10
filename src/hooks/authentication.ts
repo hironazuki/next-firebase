@@ -1,8 +1,8 @@
 import { useEffect, memo } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { currentUserState } from '@states/currentUser';
-import { AuthRepository } from '@infra/firebase/auth';
-import { UserRepository } from '@infra/firebase/user';
+import { AuthRepository } from '@repository/firebase/auth';
+import { UserRepository } from '@repository/firebase/user';
 
 export const Authentication = memo(() => {
   // グローバルステートにユーザー情報をセットするためのもの

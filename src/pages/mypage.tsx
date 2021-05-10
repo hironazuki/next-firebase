@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem, Stack } from '@chakra-ui/react';
+import { Link as ChakraLink, Text, List, ListIcon, ListItem, Stack } from '@chakra-ui/react';
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
 
 import { useCurrentUser } from '@hooks/useCurrentUser';
@@ -14,11 +14,8 @@ const Mypage = () => {
   return (
     <>
       <Stack spacing="1.5rem" px="1rem" minHeight="100vh">
-        {currentUser && <Text>{`あなたのユーザー名は${currentUser.token}です`}</Text>}
-        <Text>
-          Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-          <Code>typescript</Code>.
-        </Text>
+        {currentUser && <Text>{`あなたのユーザー名は${currentUser.displayName}です`}</Text>}
+        <Text>ログインしてないとだめなページ</Text>
 
         <List spacing={3} my={0}>
           <ListItem>

@@ -4,7 +4,7 @@ import { Layout } from '@components/templates/Layout';
 import {
   useCurrentUserNameMutation,
   useGetCurrentUserNameLazyQuery,
-} from '@infra/graphql/generated/graphql';
+} from '@repository/graphql/generated/graphql';
 import { currentUserState } from '@states/currentUser';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';

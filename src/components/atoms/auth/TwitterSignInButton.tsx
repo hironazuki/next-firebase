@@ -1,7 +1,7 @@
 import { useState, VFC } from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
-import { AuthRepository } from '@infra/firebase/auth';
+import { AuthRepository } from '@repository/firebase/auth';
 
 export const TwitterSignInButton: VFC<ButtonProps> = (props) => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);

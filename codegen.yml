@@ -3,9 +3,9 @@ schema:
   - https://next-firebase-auth.herokuapp.com/v1/graphql:
       headers:
         Authorization: 'Bearer ${AUTH_TOKEN}'
-documents: 'src/infra/graphql/**/*.graphql'
+documents: 'src/repository/graphql/**/*.graphql'
 generates:
-  src/infra/graphql/generated/graphql.tsx:
+  src/repository/graphql/generated/graphql.tsx:
     plugins:
       - 'typescript'
       - 'typescript-operations'

@@ -3,7 +3,7 @@ import { Button } from '@chakra-ui/react';
 import { useSetRecoilState } from 'recoil';
 
 import { currentUserState } from '@states/currentUser';
-import { AuthRepository } from '@infra/firebase/auth';
+import { AuthRepository } from '@repository/firebase/auth';
 
 export const SignOutButton: VFC = () => {
   const setCurrentUser = useSetRecoilState(currentUserState);

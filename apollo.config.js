@@ -4,6 +4,6 @@ module.exports = {
       name: 'my-graphql-app',
       localSchemaFile: './schema.graphql',
     },
-    includes: ['./src/infra/graphql/**/*.graphql'],
+    includes: ['./src/repository/graphql/**/*.graphql'],
   },
 };
