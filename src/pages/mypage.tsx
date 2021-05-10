@@ -11,11 +11,10 @@ const Mypage = () => {
 
   if (isAuthChecking) return <div>ログイン情報を確認中…</div>;
   if (!currentUser) return <div>ログインしていません</div>;
-
   return (
     <>
       <Stack spacing="1.5rem" px="1rem" minHeight="100vh">
-        {currentUser && <Text>{`あなたのユーザー名は${currentUser.uid}です`}</Text>}
+        {currentUser && <Text>{`あなたのユーザー名は${currentUser.token}です`}</Text>}
         <Text>
           Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
           <Code>typescript</Code>.

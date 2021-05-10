@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Flex,
   Heading,
@@ -17,11 +16,10 @@ import {
   useUnloveMutation,
   usePl_With_LoveSubscription,
   useVoteMutation,
-  useGetCurrentUserNameQuery,
 } from '@infra/graphql/generated/graphql';
 import { currentUserState } from '@states/currentUser';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 const Index = () => {
   const [currentUser] = useRecoilState(currentUserState); // グローバルステートからcurrentUserを取り出す
@@ -62,11 +60,10 @@ const Index = () => {
     return (
       <>
         <Link href="/hasura/changeName">名前変えに行く</Link>
-        {/* <Wrap display={{ base: 'block', md: 'wrap' }}> */}
         <Wrap>
           {data.programming_language.map((pg) => (
             <WrapItem
-              bg="telegram.200"
+              bg="telegram.100"
               m={10}
               key={pg.name}
               shadow="lg"
@@ -89,7 +86,7 @@ const Index = () => {
                         <Button
                           onClick={() => unLove(pg.name)}
                           isLoading={buttonVariable}
-                          bgColor="gray.100"
+                          colorScheme="gray"
                           _hover={{ opacity: '0.8' }}
                         >
                           unLove
@@ -98,16 +95,14 @@ const Index = () => {
                         <Button
                           onClick={() => love(pg.name)}
                           isLoading={buttonVariable}
-                          bgColor="pink.100"
+                          // bgColor="pink.100"
+                          colorScheme="pink"
                           _hover={{ opacity: '0.8' }}
                         >
                           love
                         </Button>
                       )}
                     </Stack>
-                    // {console.log({pg.loved_languages.some((d) => {
-                    //     d.user.id === currentUser?.uid;
-                    // })})}
                   )}
                 </Flex>
                 {pg.loved_languages.length && (

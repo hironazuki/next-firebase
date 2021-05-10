@@ -30,7 +30,7 @@ const createApolloClient = (
   if (currentUser && !token) {
     token = currentUser.token;
   }
-  const headers = token ? { Authorization: `Bearer ${token}` } : {};
+  // const headers = token ? { Authorization: `Bearer ${token}` } : {};
   const authLink = setContext((_, { headers }) =>
     // return the headers to the context so httpLink can read them
     token
