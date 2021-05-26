@@ -122,7 +122,13 @@ const Index = () => {
       </>
     );
   }
-  return <span>Loading...</span>;
+  return (
+    <>
+      <Link href="/hasura/changeName">名前変えに行く</Link>
+
+      <span>Loading...</span>
+    </>
+  );
 };
 
 Index.Layout = Layout;
